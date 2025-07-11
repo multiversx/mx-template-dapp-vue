@@ -26,7 +26,7 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, watch } from 'vue';
+import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
 import { useEnvironment } from '../composables/useEnvironment';
 import Label from './Label.vue';
@@ -62,6 +62,9 @@ const getTransactionUrl = (walletAddress: string) => {
 };
 
 const transactionUrl = computed(() => {
+  if (!network.value?.walletAddress) {
+    return '#'; // Fallback if network not loaded yet
+  }
   return getTransactionUrl(network.value.walletAddress);
 });
 
