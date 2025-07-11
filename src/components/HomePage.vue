@@ -1,45 +1,34 @@
 <template>
-  <div class="flex flex-col items-center justify-center min-h-60vh text-center">
-    <h1 class="text-4xl font-bold mb-8">MultiversX dApp Template</h1>
-    
-    <div v-if="!isLoggedIn" class="space-y-6">
-      <p class="text-lg text-gray-600 mb-8">
-        Connect your wallet to get started with MultiversX blockchain interactions
-      </p>
-      
-      <ConnectButton className="text-lg px-8 py-4">
-        Connect Wallet
-      </ConnectButton>
-      
-      <div class="mt-8 text-sm text-gray-500">
-        <p>This demo supports Web Wallet, Extension, WalletConnect, and Ledger</p>
+  <div class="flex flex-col-reverse sm:flex-row items-center h-full w-full">
+    <div class="flex items-start sm:items-center h-full sm:w-1/2 sm:bg-center">
+      <div class="flex flex-col gap-2 max-w-[70sch] text-center sm:text-left text-xl font-medium md:text-2xl lg:text-3xl">
+        <div>
+          <h1>Template dApp</h1>
+          <p class="text-gray-400">
+            The 
+            <a href="https://www.npmjs.com/package/@multiversx/sdk-dapp" 
+               target="_blank" 
+               class="text-gray-400 underline decoration-dotted hover:decoration-solid">
+              sdk-dapp
+            </a> 
+            starter project for any dApp 
+            <br class="hidden xl:block">
+            built on the 
+            <a href="https://multiversx.com/" 
+               target="_blank" 
+               class="text-gray-400 underline decoration-dotted hover:decoration-solid">
+              MultiversX
+            </a> 
+            blockchain.
+          </p>
+        </div>
+        <Transaction />
       </div>
     </div>
-    
-    <div v-else class="space-y-6">
-      <p class="text-lg text-green-600 mb-4">✅ Wallet Connected!</p>
-      <p class="text-gray-600 mb-8">
-        Redirecting to dashboard...
-      </p>
-    </div>
+    <div class="h-4/6 bg-mvx-white bg-contain bg-no-repeat w-1/2 bg-center"></div>
   </div>
 </template>
 
 <script setup lang="ts">
-import { watch } from 'vue';
-import { useRouter } from 'vue-router';
-import { useAuth } from '../composables/useAuth';
-import ConnectButton from './ConnectButton.vue';
-
-const { isLoggedIn } = useAuth();
-const router = useRouter();
-
-// Redirect to dashboard when logged in
-watch(isLoggedIn, (newValue) => {
-  if (newValue) {
-    setTimeout(() => {
-      router.push('/dashboard');
-    }, 1000); // Small delay to show the success message
-  }
-}, { immediate: true });
+import Transaction from './Transaction.vue';
 </script> 
