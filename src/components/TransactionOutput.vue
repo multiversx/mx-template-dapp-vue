@@ -2,18 +2,22 @@
   <div class="flex flex-col" v-if="transaction">
     <p>
       <Label>Hash: </Label>
-      <MxLink
-        :to="'/transactions/' + transaction.hash"
+      <a
+        :href="hashExplorerLink"
+        target="_blank"
+        rel="noopener noreferrer"
         className="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
       >
         {{ transaction.hash }}
-      </MxLink>
+    </a>
     </p>
 
     <p>
       <Label>Receiver: </Label>
       <MxLink
-        :to="'/accounts/' + transaction.receiver"
+        :href="receiverExplorerLink"
+        target="_blank"
+        rel="noopener noreferrer"
         className="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
       >
         {{ transaction.receiver }}
@@ -25,7 +29,7 @@
       <FormatAmount
         :value="transaction.value"
         :showLabel="transaction.value !== '0'"
-        egldLabel="EGLD"
+        :egldLabel="label"
         data-testid="balance"
       />
     </p>
@@ -48,10 +52,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed } from 'vue';
+import { computed, onMounted, ref } from 'vue';
 import Label from './Label.vue';
 import FormatAmount from './FormatAmount.vue';
 import MxLink from './MxLink.vue';
+import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
+import { getExplorerLink } from '@multiversx/sdk-dapp/out/utils/transactions/getExplorerLink';
 
 export interface SignedTransactionType {
   hash: string;
@@ -68,6 +74,15 @@ interface Props {
 
 const props = defineProps<Props>();
 
+const label = ref('');
+const explorerAddress = ref('');
+
+onMounted(() => {
+  const {network} = getNetworkConfig();
+  label.value = network.egldLabel
+  explorerAddress.value = network.explorerAddress;
+});
+
 const decodedData = computed(() => {
   if (!props.transaction?.data) {
     return 'N/A';
@@ -79,4 +94,25 @@ const decodedData = computed(() => {
     return 'N/A';
   }
 });
+
+const hashExplorerLink = computed(() => {
+  if (!props.transaction?.hash) {
+    return '';
+  }
+
+  return getExplorerLink({
+    to: `/transactions/${props.transaction.hash}`,
+    explorerAddress: explorerAddress.value,
+  });
+});
+
+const receiverExplorerLink = computed(() => {
+  if (!props.transaction?.receiver) {
+    return '';
+  }
+  return getExplorerLink({
+    to: `/accounts/${props.transaction.receiver}`,
+    explorerAddress: explorerAddress.value,
+  });
+})
 </script> 
