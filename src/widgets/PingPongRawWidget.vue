@@ -97,7 +97,7 @@ import { usePingPong } from '../composables/usePingPong';
 import { contractAddress } from '../config';
 import {
   calculatePingPongState,
-  formatTimeRemaining,
+  formatTimeRemaining
 } from '../helpers/countdown.helpers';
 
 interface ViewState {
@@ -123,7 +123,7 @@ const viewState = computed<ViewState>(() => {
     canPing: pingPongState.canPing,
     canPong: pingPongState.canPong,
     isLoading: pingPongService.loading.value,
-    error: pingPongService.error.value,
+    error: pingPongService.error.value
   };
 });
 

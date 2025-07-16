@@ -102,7 +102,7 @@ const hashExplorerLink = computed(() => {
 
   return getExplorerLink({
     to: `/transactions/${props.transaction.hash}`,
-    explorerAddress: explorerAddress.value,
+    explorerAddress: explorerAddress.value
   });
 });
 
@@ -112,7 +112,7 @@ const receiverExplorerLink = computed(() => {
   }
   return getExplorerLink({
     to: `/accounts/${props.transaction.receiver}`,
-    explorerAddress: explorerAddress.value,
+    explorerAddress: explorerAddress.value
   });
 });
 </script>

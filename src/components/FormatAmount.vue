@@ -25,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
   showLabel: true,
   egldLabel: 'EGLD',
   digits: 4,
-  decimals: 18,
+  decimals: 18
 });
 
 const isValid = ref(true);

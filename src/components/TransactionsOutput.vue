@@ -10,7 +10,7 @@
 
 <script setup lang="ts">
 import TransactionOutput, {
-  type SignedTransactionType,
+  type SignedTransactionType
 } from './TransactionOutput.vue';
 
 interface Props {
@@ -18,6 +18,6 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  transactions: () => [],
+  transactions: () => []
 });
 </script>

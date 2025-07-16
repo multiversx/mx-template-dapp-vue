@@ -21,6 +21,6 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   isLoading: false,
-  className: 'p-4',
+  className: 'p-4'
 });
 </script>

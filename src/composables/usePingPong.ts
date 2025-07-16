@@ -28,25 +28,25 @@ export interface TransactionsDisplayInfoType {
 const PING_TRANSACTION_INFO: TransactionsDisplayInfoType = {
   processingMessage: 'Processing Ping transaction',
   errorMessage: 'An error has occurred during Ping',
-  successMessage: 'Ping transaction successful',
+  successMessage: 'Ping transaction successful'
 };
 
 const PONG_TRANSACTION_INFO: TransactionsDisplayInfoType = {
   processingMessage: 'Processing Pong transaction',
   errorMessage: 'An error has occurred during Pong',
-  successMessage: 'Pong transaction successful',
+  successMessage: 'Pong transaction successful'
 };
 
 async function makeVmQuery(
   funcName: string,
-  args: string[],
+  args: string[]
 ): Promise<PingPongResponseType> {
   const networkConfig = getNetworkConfig();
 
   const body = {
     scAddress: contractAddress,
     funcName,
-    args,
+    args
   };
 
   const response = await fetch(
@@ -54,10 +54,10 @@ async function makeVmQuery(
     {
       method: 'POST',
       headers: {
-        'Content-Type': 'application/json',
+        'Content-Type': 'application/json'
       },
-      body: JSON.stringify(body),
-    },
+      body: JSON.stringify(body)
+    }
   );
 
   if (!response.ok) {
@@ -205,12 +205,12 @@ export function usePingPong() {
         gasPrice: BigInt(GAS_PRICE),
         chainID: networkConfig.network.chainId,
         sender: new Address(account.address),
-        version: 1,
+        version: 1
       });
 
       const sessionId = await signAndSendTransactions(
         [pingTransaction],
-        PING_TRANSACTION_INFO,
+        PING_TRANSACTION_INFO
       );
 
       loading.value = false;
@@ -241,12 +241,12 @@ export function usePingPong() {
         gasPrice: BigInt(GAS_PRICE),
         chainID: networkConfig.network.chainId,
         sender: new Address(account.address),
-        version: 1,
+        version: 1
       });
 
       const sessionId = await signAndSendTransactions(
         [pongTransaction],
-        PONG_TRANSACTION_INFO,
+        PONG_TRANSACTION_INFO
       );
 
       loading.value = false;
@@ -259,7 +259,7 @@ export function usePingPong() {
 
   async function signAndSendTransactions(
     transactions: Transaction[],
-    transactionsDisplayInfo?: TransactionsDisplayInfoType,
+    transactionsDisplayInfo?: TransactionsDisplayInfoType
   ): Promise<string> {
     const provider = getAccountProvider();
     const txManager = TransactionManager.getInstance();
@@ -267,7 +267,7 @@ export function usePingPong() {
     const signedTransactions = await provider.signTransactions(transactions);
     const sentTransactions = await txManager.send(signedTransactions);
     const sessionId = await txManager.track(sentTransactions, {
-      transactionsDisplayInfo,
+      transactionsDisplayInfo
     });
 
     return sessionId;
@@ -283,7 +283,7 @@ export function usePingPong() {
         value: tx.value?.toString() || '0',
         gasPrice: tx.gasPrice?.toString() || '0',
         gasLimit: tx.gasLimit?.toString() || '0',
-        data: tx.data,
+        data: tx.data
       }));
     } catch (err) {
       console.error('Error getting pending transactions:', err);
@@ -310,7 +310,7 @@ export function usePingPong() {
         loading.value = false;
       }
     },
-    { immediate: true },
+    { immediate: true }
   );
 
   onMounted(() => {
@@ -351,6 +351,6 @@ export function usePingPong() {
     signAndSendTransactions,
     getPendingTransactions: getPendingSignedTransactions,
     refreshTimeToPong,
-    clearError,
+    clearError
   };
 }

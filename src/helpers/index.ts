@@ -1,4 +1,4 @@
 export {
   calculatePingPongState,
-  formatTimeRemaining,
+  formatTimeRemaining
 } from './countdown.helpers';

@@ -44,7 +44,7 @@ import { useEnvironment } from '../composables/useEnvironment';
 // Route names
 const routeNames = {
   dashboard: '/dashboard',
-  home: '/',
+  home: '/'
 };
 
 // Use composables for real auth and environment state

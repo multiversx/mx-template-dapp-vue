@@ -61,6 +61,6 @@ export function useAuth() {
     getIsLoggedIn: () => isLoggedIn.value,
     setLoggedIn,
     logout,
-    cleanup,
+    cleanup
   };
 }

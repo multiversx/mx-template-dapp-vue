@@ -11,23 +11,23 @@ const routes = [
   {
     path: '/',
     component: () => import('./components/HomePage.vue'),
-    meta: { requireAuth: false },
+    meta: { requireAuth: false }
   },
   {
     path: '/dashboard',
     component: () => import('./components/DashboardPage.vue'),
-    meta: { requireAuth: true },
+    meta: { requireAuth: true }
   },
   {
     path: '/disclaimer',
     component: () => import('./components/DisclaimerPage.vue'),
-    meta: { requireAuth: false },
-  },
+    meta: { requireAuth: false }
+  }
 ];
 
 const router = createRouter({
   history: createWebHistory(),
-  routes,
+  routes
 });
 
 // Add authentication guard similar to React and Angular versions
@@ -54,8 +54,8 @@ const config = {
   storage: { getStorageCallback: () => sessionStorage },
   dAppConfig: {
     environment: EnvironmentsEnum.devnet,
-    successfulToastLifetime: 5000,
-  },
+    successfulToastLifetime: 5000
+  }
 };
 
 initApp(config).then(() => {

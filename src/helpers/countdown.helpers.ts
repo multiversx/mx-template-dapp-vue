@@ -12,19 +12,19 @@ export function calculatePingPongState(secondsRemaining?: number | null): {
     case null:
       return {
         canPing: true,
-        canPong: false,
+        canPong: false
       };
     case 0:
       return {
         timeRemaining: 0,
         canPing: false,
-        canPong: true,
+        canPong: true
       };
     default: {
       return {
         timeRemaining: secondsRemaining,
         canPing: false,
-        canPong: false,
+        canPong: false
       };
     }
   }

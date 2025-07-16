@@ -33,6 +33,6 @@ export function useEnvironment() {
   return {
     environment,
     network,
-    getEnvironment,
+    getEnvironment
   };
 }

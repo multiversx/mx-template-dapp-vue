@@ -12,7 +12,7 @@ const WIDGETS: WidgetType[] = [
     title: 'Account',
     widget: AccountWidget,
     description: 'Connected account details',
-    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account',
+    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account'
   },
   {
     title: 'Ping & Pong (Manual)',
@@ -20,14 +20,14 @@ const WIDGETS: WidgetType[] = [
     description:
       'Smart Contract interactions using manually formulated transactions',
     reference:
-      'https://docs.multiversx.com/sdk-and-tools/indices/es-index-transactions/',
+      'https://docs.multiversx.com/sdk-and-tools/indices/es-index-transactions/'
   },
   {
     title: 'Sign message',
     widget: SignMessageWidget,
     description: 'Message signing using the connected account',
-    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account-1',
-  },
+    reference: 'https://docs.multiversx.com/sdk-and-tools/sdk-dapp/#account-1'
+  }
 ];
 
 const widgets = WIDGETS;

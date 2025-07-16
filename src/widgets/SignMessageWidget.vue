@@ -74,7 +74,7 @@
 import {
   faPen,
   faBroom,
-  faRotateRight,
+  faRotateRight
 } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Message } from '@multiversx/sdk-core/out';
@@ -107,7 +107,7 @@ async function handleSubmit() {
 
     // Create a Message object from the message
     const messageToSign = new Message({
-      data: Buffer.from(message.value, 'utf8'),
+      data: Buffer.from(message.value, 'utf8')
     });
 
     // Get the account provider and sign the message
@@ -147,7 +147,7 @@ const encodedMessage = computed(() => {
   return (
     '0x' +
     Array.from(signedMessage.value.data, (byte: number) =>
-      byte.toString(16).padStart(2, '0'),
+      byte.toString(16).padStart(2, '0')
     ).join('')
   );
 });

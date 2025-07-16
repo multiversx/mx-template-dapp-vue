@@ -53,7 +53,7 @@ const getTransactionUrl = (walletAddress: string) => {
     value,
     data,
     callbackUrl,
-    gasLimit,
+    gasLimit
   };
 
   const search = new URLSearchParams(searchParams).toString();
@@ -70,7 +70,7 @@ const transactionUrl = computed(() => {
 const txData = computed(() => ({
   status: (route.query.status as string) || null,
   txHash: (route.query.txHash as string) || null,
-  address: (route.query.address as string) || null,
+  address: (route.query.address as string) || null
 }));
 
 // Reset search params after transaction is completed
@@ -82,6 +82,6 @@ watch(
       router.replace({ query: {} });
     }
   },
-  { deep: true },
+  { deep: true }
 );
 </script>
