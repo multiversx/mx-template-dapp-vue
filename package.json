@@ -14,13 +14,14 @@
     "@fortawesome/fontawesome-svg-core": "^6.7.2",
     "@fortawesome/free-solid-svg-icons": "^6.7.2",
     "@fortawesome/vue-fontawesome": "^3.0.8",
-    "@multiversx/sdk-core": "^14.0.0",
+    "@multiversx/sdk-core": "14.2.6",
     "@multiversx/sdk-dapp": "^5.x",
     "@multiversx/sdk-dapp-ui": "^0.x",
     "@multiversx/sdk-dapp-utils": "^2.x",
     "vite-plugin-node-polyfills": "^0.23.0",
     "vue": "^3.5.17",
-    "vue-router": "^4.5.1"
+    "vue-router": "^4.5.1",
+    "axios": "^1.10.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.1.11",

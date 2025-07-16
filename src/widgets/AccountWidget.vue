@@ -12,7 +12,12 @@
 
       <p>
         <Label>Balance: </Label>
-        <span data-testid="balance">{{ balance }}</span>
+        <FormatAmount
+        :value="balance"
+        :showLabel="balance !== '0'"
+        :egldLabel="label"
+        data-testid="balance"
+      />
       </p>
 
       <p>
@@ -28,17 +33,22 @@ import { getAccount } from '@multiversx/sdk-dapp/out/methods/account/getAccount'
 import { getStore } from '@multiversx/sdk-dapp/out/store/store';
 import OutputContainer from '../components/OutputContainer.vue';
 import Label from '../components/Label.vue';
+import FormatAmount from '@/components/FormatAmount.vue';
+import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
+
 
 const address = ref('');
 const balance = ref('');
 const shard = ref(0);
 const nonce = ref(0);
 const isLoading = ref(true);
+const label = ref('');
 
 let storeUnsubscribe: (() => void) | undefined;
 
 function updateAccount() {
   const account = getAccount();
+  const {network} = getNetworkConfig();
   
   if (account) {
     address.value = account.address;
@@ -46,6 +56,7 @@ function updateAccount() {
     shard.value = account.shard || 0;
     nonce.value = account.nonce || 0;
     isLoading.value = false;
+    label.value = network.egldLabel
   }
 }
 

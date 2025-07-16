@@ -116,11 +116,12 @@ const viewState = computed<ViewState>(() => {
   };
 });
 
-const pendingTransactions = computed(() => pingPongService.getPendingTransactions());
+const pendingTransactions = ref<SignedTransactionType[]>([]);
 
 async function onSendPingTransaction() {
   try {
     await pingPongService.sendPingTransaction();
+    pendingTransactions.value = pingPongService.getPendingTransactions();
   } catch (error) {
     console.error('Error sending ping transaction:', error);
   }
@@ -129,6 +130,7 @@ async function onSendPingTransaction() {
 async function onSendPongTransaction() {
   try {
     await pingPongService.sendPongTransaction();
+    pendingTransactions.value = pingPongService.getPendingTransactions();
   } catch (error) {
     console.error('Error sending pong transaction:', error);
   }
