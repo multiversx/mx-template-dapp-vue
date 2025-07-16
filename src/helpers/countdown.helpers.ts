@@ -42,4 +42,4 @@ export function formatTimeRemaining(seconds: number | null): string {
   return `${minutes.toString().padStart(2, '0')}:${remainingSeconds
     .toString()
     .padStart(2, '0')}`;
-} 
+}

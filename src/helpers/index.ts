@@ -1,1 +1,4 @@
-export { calculatePingPongState, formatTimeRemaining } from './countdown.helpers'; 
+export {
+  calculatePingPongState,
+  formatTimeRemaining,
+} from './countdown.helpers';

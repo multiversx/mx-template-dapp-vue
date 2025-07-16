@@ -20,4 +20,4 @@ export { default as Widget } from './Widget.vue';
 
 // Re-export types
 export type { SignedTransactionType } from './TransactionOutput.vue';
-export type { WidgetType } from './Widget.vue'; 
+export type { WidgetType } from './Widget.vue';

@@ -17,9 +17,9 @@ interface Props {
 }
 
 withDefaults(defineProps<Props>(), {
-  transactions: null
+  transactions: null,
 });
 
 // Contract address from config - now properly imported
 const contractAddressFromConfig = contractAddress;
-</script> 
+</script>

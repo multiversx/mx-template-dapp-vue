@@ -1,7 +1,7 @@
-import { ref, onMounted, onUnmounted, computed } from 'vue';
 import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
 import { getStore } from '@multiversx/sdk-dapp/out/store/store';
 import type { NetworkType } from '@multiversx/sdk-dapp/out/types/network.types';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 
 const networkConfig = ref<NetworkType | null>(null);
 let storeUnsubscribe: (() => void) | undefined;
@@ -33,6 +33,6 @@ export function useEnvironment() {
   return {
     environment,
     network,
-    getEnvironment
+    getEnvironment,
   };
-} 
+}

@@ -1,10 +1,9 @@
 <template>
   <span :class="className" :data-testid="dataTestId">
     <span class="amount-integer">{{ valueInteger }}</span
-    ><span class="amount-decimal" v-if="valueDecimal"
-      >.{{ valueDecimal }}</span
-    >
-    <span class="amount-label" v-if="showLabel"> {{ label }}</span>
+    ><span v-if="valueDecimal"
+class="amount-decimal">.{{ valueDecimal }}</span>
+    <span v-if="showLabel" class="amount-label"> {{ label }}</span>
   </span>
 </template>
 
@@ -26,7 +25,7 @@ const props = withDefaults(defineProps<Props>(), {
   showLabel: true,
   egldLabel: 'EGLD',
   digits: 4,
-  decimals: 18
+  decimals: 18,
 });
 
 const isValid = ref(true);
@@ -88,4 +87,4 @@ watch(() => props.egldLabel, updateFormattedData);
   font-size: 0.9em;
   margin-left: 0.25rem;
 }
-</style> 
+</style>

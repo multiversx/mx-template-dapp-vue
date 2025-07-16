@@ -10,14 +10,12 @@
     <p v-if="txData.status">
       <Label>Transaction status:</Label> {{ txData.status }}
     </p>
-    <p v-if="txData.address">
-      <Label>Sender:</Label> {{ txData.address }}
-    </p>
+    <p v-if="txData.address"><Label>Sender:</Label> {{ txData.address }}</p>
     <p v-if="txData.txHash">
       <Label>Hash:</Label>
       <MxLink
         :to="`/transactions/${txData.txHash}`"
-        className="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
+        class-name="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
       >
         {{ txData.txHash }}
       </MxLink>
@@ -28,9 +26,9 @@
 <script setup lang="ts">
 import { computed, watch } from 'vue';
 import { useRoute, useRouter } from 'vue-router';
-import { useEnvironment } from '../composables/useEnvironment';
 import Label from './Label.vue';
 import MxLink from './MxLink.vue';
+import { useEnvironment } from '../composables/useEnvironment';
 
 const route = useRoute();
 const router = useRouter();
@@ -43,7 +41,8 @@ const parseAmount = (amount: string) => {
 const getTransactionUrl = (walletAddress: string) => {
   const walletBaseUrl = `${walletAddress}/hook/transaction`;
 
-  const receiver = 'erd1deaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaqtv0gag';
+  const receiver =
+    'erd1deaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaddeaqtv0gag';
   const data = 'Hello_world';
   const value = parseAmount('0.01');
   const callbackUrl = encodeURIComponent(window.location.origin);
@@ -54,7 +53,7 @@ const getTransactionUrl = (walletAddress: string) => {
     value,
     data,
     callbackUrl,
-    gasLimit
+    gasLimit,
   };
 
   const search = new URLSearchParams(searchParams).toString();
@@ -69,9 +68,9 @@ const transactionUrl = computed(() => {
 });
 
 const txData = computed(() => ({
-  status: route.query.status as string || null,
-  txHash: route.query.txHash as string || null,
-  address: route.query.address as string || null
+  status: (route.query.status as string) || null,
+  txHash: (route.query.txHash as string) || null,
+  address: (route.query.address as string) || null,
 }));
 
 // Reset search params after transaction is completed
@@ -83,6 +82,6 @@ watch(
       router.replace({ query: {} });
     }
   },
-  { deep: true }
+  { deep: true },
 );
-</script> 
+</script>

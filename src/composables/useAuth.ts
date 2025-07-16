@@ -1,7 +1,7 @@
-import { ref, onMounted, onUnmounted, readonly, computed } from 'vue';
-import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
 import { getIsLoggedIn } from '@multiversx/sdk-dapp/out/methods/account/getIsLoggedIn';
+import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
 import { getStore } from '@multiversx/sdk-dapp/out/store/store';
+import { ref, onMounted, onUnmounted, readonly, computed } from 'vue';
 
 const isLoggedIn = ref(false);
 let storeUnsubscribe: (() => void) | undefined;
@@ -61,6 +61,6 @@ export function useAuth() {
     getIsLoggedIn: () => isLoggedIn.value,
     setLoggedIn,
     logout,
-    cleanup
+    cleanup,
   };
-} 
+}

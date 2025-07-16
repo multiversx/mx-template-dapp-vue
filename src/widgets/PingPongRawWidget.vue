@@ -2,7 +2,9 @@
   <div class="flex flex-col gap-6">
     <!-- Loading Indicator -->
     <div v-if="viewState.isLoading" class="flex justify-center">
-      <div class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"></div>
+      <div
+        class="animate-spin rounded-full h-8 w-8 border-b-2 border-blue-500"
+      />
     </div>
 
     <!-- Error Message -->
@@ -12,9 +14,9 @@
     >
       {{ viewState.error }}
       <button
-        @click="clearError"
         class="float-right font-bold"
         aria-label="Close error"
+        @click="clearError"
       >
         ×
       </button>
@@ -25,21 +27,23 @@
       <div class="flex justify-start gap-2">
         <Button
           :disabled="!viewState.canPing || viewState.isLoading"
+          data-test-id="btnPingRaw"
+          data-cy="transactionBtn"
           @click="onSendPingTransaction"
-          dataTestId="btnPingRaw"
-          dataCy="transactionBtn"
         >
-          <font-awesome-icon :icon="faArrowUp" class="mr-1" />
+          <FontAwesomeIcon :icon="faArrowUp" class="mr-1" />
           Ping
         </Button>
 
         <Button
-          :disabled="!viewState.canPong || viewState.canPing || viewState.isLoading"
+          :disabled="
+            !viewState.canPong || viewState.canPing || viewState.isLoading
+          "
+          data-test-id="btnPongRaw"
+          data-cy="transactionBtn"
           @click="onSendPongTransaction"
-          dataTestId="btnPongRaw"
-          dataCy="transactionBtn"
         >
-          <font-awesome-icon :icon="faArrowDown" class="mr-1" />
+          <FontAwesomeIcon :icon="faArrowDown" class="mr-1" />
           Pong
         </Button>
       </div>
@@ -50,7 +54,9 @@
       <!-- Contract Address -->
       <div class="mb-4">
         <label class="font-semibold">Contract Address:</label>
-        <span class="ml-2 font-mono text-sm break-all">{{ contractAddress }}</span>
+        <span class="ml-2 font-mono text-sm break-all">{{
+          contractAddress
+        }}</span>
       </div>
 
       <!-- Time Remaining -->
@@ -59,7 +65,9 @@
         class="mb-4"
       >
         <label class="font-semibold">Time remaining:</label>
-        <span class="ml-2 text-red-600 font-mono">{{ viewState.timeRemaining }}</span>
+        <span class="ml-2 text-red-600 font-mono">{{
+          viewState.timeRemaining
+        }}</span>
         <span class="ml-1">until able to pong</span>
       </div>
 
@@ -78,16 +86,19 @@
 </template>
 
 <script setup lang="ts">
-import { computed, ref, reactive, onMounted, onUnmounted } from 'vue';
-import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
+import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
+import { computed, ref, reactive, onMounted, onUnmounted } from 'vue';
+import Button from '../components/Button.vue';
+import OutputContainer from '../components/OutputContainer.vue';
+import PingPongOutput from '../components/PingPongOutput.vue';
+import { type SignedTransactionType } from '../components/TransactionOutput.vue';
 import { usePingPong } from '../composables/usePingPong';
 import { contractAddress } from '../config';
-import { type SignedTransactionType } from '../components/TransactionOutput.vue';
-import { calculatePingPongState, formatTimeRemaining } from '../helpers/countdown.helpers';
-import OutputContainer from '../components/OutputContainer.vue';
-import Button from '../components/Button.vue';
-import PingPongOutput from '../components/PingPongOutput.vue';
+import {
+  calculatePingPongState,
+  formatTimeRemaining,
+} from '../helpers/countdown.helpers';
 
 interface ViewState {
   timeToPong: number | null;
@@ -105,7 +116,7 @@ const pingPongService = usePingPong();
 const viewState = computed<ViewState>(() => {
   const timeToPong = pingPongService.timeToPong.value;
   const pingPongState = calculatePingPongState(timeToPong);
-  
+
   return {
     timeToPong,
     timeRemaining: formatTimeRemaining(timeToPong),
@@ -155,4 +166,4 @@ onUnmounted(() => {
     clearInterval(intervalId);
   }
 });
-</script> 
+</script>
