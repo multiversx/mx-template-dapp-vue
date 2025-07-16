@@ -17,6 +17,7 @@
         </div>
 
         <template v-if="isLoggedIn">
+          <GitHubButton />
           <NotificationsButton />
           <Button
             :class-name="'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-gray-600 hover:bg-slate-100 mx-0'"
@@ -36,6 +37,7 @@
 import { useRouter } from 'vue-router';
 import Button from './Button.vue';
 import ConnectButton from './ConnectButton.vue';
+import GitHubButton from './GitHubButton.vue';
 import MxLink from './MxLink.vue';
 import NotificationsButton from './NotificationsButton.vue';
 import { useAuth } from '../composables/useAuth';
