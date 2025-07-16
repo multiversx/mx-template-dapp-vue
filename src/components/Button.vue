@@ -2,13 +2,13 @@
   <button
     :id="id"
     :disabled="disabled"
-    @click="$emit('click', $event)"
     :class="className"
     :type="type"
     :data-testid="dataTestId"
     :data-cy="dataCy"
+    @click="$emit('click', $event)"
   >
-    <slot></slot>
+    <slot />
   </button>
 </template>
 
@@ -25,10 +25,11 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   disabled: false,
   type: 'button',
-  className: 'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'
+  className:
+    'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0 disabled:bg-gray-200 disabled:text-black disabled:cursor-not-allowed'
 });
 
 defineEmits<{
   click: [event: MouseEvent];
 }>();
-</script> 
+</script>

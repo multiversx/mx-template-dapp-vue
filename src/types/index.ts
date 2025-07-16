@@ -8,4 +8,4 @@ export interface SignedTransactionType {
   gasPrice: string;
   gasLimit: string;
   data?: string;
-} 
+}

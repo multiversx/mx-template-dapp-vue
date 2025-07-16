@@ -9,7 +9,9 @@
 </template>
 
 <script setup lang="ts">
-import TransactionOutput, { type SignedTransactionType } from './TransactionOutput.vue';
+import TransactionOutput, {
+  type SignedTransactionType
+} from './TransactionOutput.vue';
 
 interface Props {
   transactions: SignedTransactionType[];
@@ -18,4 +20,4 @@ interface Props {
 withDefaults(defineProps<Props>(), {
   transactions: () => []
 });
-</script> 
+</script>

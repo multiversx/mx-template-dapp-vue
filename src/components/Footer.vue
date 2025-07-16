@@ -1,5 +1,7 @@
 <template>
-  <footer class="mx-auto w-full max-w-prose pb-6 pl-6 pr-6 text-center text-gray-400">
+  <footer
+    class="mx-auto w-full max-w-prose pb-6 pl-6 pr-6 text-center text-gray-400"
+  >
     <div class="flex flex-col items-center text sm text-gray-400">
       <router-link
         class="text-gray-400 text-sm hover:cursor-pointer hover:underline"
@@ -22,4 +24,4 @@
 
 <script setup lang="ts">
 // No script needed for static footer
-</script> 
+</script>

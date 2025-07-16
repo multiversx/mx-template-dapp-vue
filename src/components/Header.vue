@@ -7,26 +7,26 @@
       <img src="../assets/logo.svg" alt="MultiversX" class="w-full h-6" />
     </MxLink>
 
-    <nav class="h-full w-full text-sm sm:relative sm:left-auto sm:top-auto sm:flex sm:w-auto sm:flex-row sm:justify-end sm:bg-transparent">
+    <nav
+      class="h-full w-full text-sm sm:relative sm:left-auto sm:top-auto sm:flex sm:w-auto sm:flex-row sm:justify-end sm:bg-transparent"
+    >
       <div class="flex justify-end container mx-auto items-center gap-2">
         <div class="flex gap-1 items-center">
-          <div class="w-2 h-2 rounded-full bg-green-500"></div>
+          <div class="w-2 h-2 rounded-full bg-green-500" />
           <p class="text-gray-600">{{ environment }}</p>
         </div>
 
         <template v-if="isLoggedIn">
           <NotificationsButton />
           <Button
+            :class-name="'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-gray-600 hover:bg-slate-100 mx-0'"
             @click="handleLogout"
-            :className="'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-gray-600 hover:bg-slate-100 mx-0'"
           >
             Close
           </Button>
         </template>
 
-        <ConnectButton v-else>
-          Connect
-        </ConnectButton>
+        <ConnectButton v-else> Connect </ConnectButton>
       </div>
     </nav>
   </header>
@@ -34,12 +34,12 @@
 
 <script setup lang="ts">
 import { useRouter } from 'vue-router';
+import Button from './Button.vue';
+import ConnectButton from './ConnectButton.vue';
+import MxLink from './MxLink.vue';
+import NotificationsButton from './NotificationsButton.vue';
 import { useAuth } from '../composables/useAuth';
 import { useEnvironment } from '../composables/useEnvironment';
-import MxLink from './MxLink.vue';
-import Button from './Button.vue';
-import NotificationsButton from './NotificationsButton.vue';
-import ConnectButton from './ConnectButton.vue';
 
 // Route names
 const routeNames = {
@@ -56,4 +56,4 @@ async function handleLogout() {
   await logout();
   router.push(routeNames.home);
 }
-</script> 
+</script>

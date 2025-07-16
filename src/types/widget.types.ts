@@ -4,4 +4,4 @@ export interface WidgetType {
   reference: string;
   anchor?: string;
   widget?: any; // Component type
-} 
+}

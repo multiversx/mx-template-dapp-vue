@@ -22,4 +22,4 @@ withDefaults(defineProps<Props>(), {
 
 // Contract address from config - now properly imported
 const contractAddressFromConfig = contractAddress;
-</script> 
+</script>

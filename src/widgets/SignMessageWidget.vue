@@ -3,31 +3,31 @@
     <div class="flex gap-2 items-start">
       <Button
         v-if="state === 'success' || state === 'error'"
-        dataTestId="closeTransactionSuccessBtn"
         id="closeButton"
+        data-test-id="closeTransactionSuccessBtn"
         @click="handleClear"
       >
-        <font-awesome-icon :icon="state === 'error' ? faRotateRight : faBroom" />
+        <FontAwesomeIcon :icon="state === 'error' ? faRotateRight : faBroom" />
       </Button>
 
       <Button
         v-if="state === 'pending'"
-        dataTestId="signMsgBtn"
-        @click="handleSubmit"
+        data-test-id="signMsgBtn"
         :disabled="!message.trim()"
+        @click="handleSubmit"
       >
-        <font-awesome-icon :icon="faPen" />
+        <FontAwesomeIcon :icon="faPen" />
         Sign
       </Button>
     </div>
 
-    <OutputContainer :className="'p-0 border-0'">
+    <OutputContainer :class-name="'p-0 border-0'">
       <div v-if="state === 'pending'">
         <textarea
           v-model="message"
           placeholder="Write message here"
           class="resize-none w-full h-32 rounded-lg focus:outline-none focus:border-blue-500 p-2 border border-gray-300"
-        ></textarea>
+        />
       </div>
 
       <div v-if="state === 'success' && signedMessage">
@@ -40,7 +40,7 @@
                 class="flex-1 resize-none outline-none bg-transparent border border-gray-300 rounded p-2"
                 rows="2"
                 :value="signature"
-              ></textarea>
+              />
             </div>
 
             <div class="flex flex-row w-full gap-2 mb-2">
@@ -56,7 +56,7 @@
                 rows="1"
                 :value="decodedMessage"
                 placeholder="Decoded message"
-              ></textarea>
+              />
             </div>
           </div>
         </div>
@@ -71,15 +71,19 @@
 </template>
 
 <script setup lang="ts">
-import { ref, computed } from 'vue';
+import {
+  faPen,
+  faBroom,
+  faRotateRight
+} from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { faPen, faBroom, faRotateRight } from '@fortawesome/free-solid-svg-icons';
+import { Message } from '@multiversx/sdk-core/out';
 import { getAccount } from '@multiversx/sdk-dapp/out/methods/account/getAccount';
 import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
-import { Message } from '@multiversx/sdk-core/out';
-import OutputContainer from '../components/OutputContainer.vue';
-import Label from '../components/Label.vue';
+import { ref, computed } from 'vue';
 import Button from '../components/Button.vue';
+import Label from '../components/Label.vue';
+import OutputContainer from '../components/OutputContainer.vue';
 
 const message = ref('');
 const signedMessage = ref<any>(null);
@@ -103,7 +107,7 @@ async function handleSubmit() {
 
     // Create a Message object from the message
     const messageToSign = new Message({
-      data: Buffer.from(message.value, 'utf8'),
+      data: Buffer.from(message.value, 'utf8')
     });
 
     // Get the account provider and sign the message
@@ -152,4 +156,4 @@ const decodedMessage = computed(() => {
   if (!signedMessage.value) return '';
   return new TextDecoder().decode(signedMessage.value.data);
 });
-</script> 
+</script>

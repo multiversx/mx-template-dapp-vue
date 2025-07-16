@@ -1,11 +1,11 @@
-import './assets/main.css'
+import './assets/main.css';
+import { getIsLoggedIn } from '@multiversx/sdk-dapp/out/methods/account/getIsLoggedIn';
 import { initApp } from '@multiversx/sdk-dapp/out/methods/initApp/initApp';
 import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
-import { getIsLoggedIn } from '@multiversx/sdk-dapp/out/methods/account/getIsLoggedIn';
 
-import { createApp } from 'vue'
-import App from './App.vue'
+import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import App from './App.vue';
 
 const routes = [
   {

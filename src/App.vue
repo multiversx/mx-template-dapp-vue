@@ -1,8 +1,8 @@
 <script setup lang="ts">
 import { computed } from 'vue';
 import { useRoute } from 'vue-router';
-import Header from './components/Header.vue';
 import Footer from './components/Footer.vue';
+import Header from './components/Header.vue';
 
 const route = useRoute();
 
@@ -15,7 +15,7 @@ const shouldWrapInPageWrapper = computed(() => {
   <div class="flex min-h-screen flex-col bg-slate-200">
     <Header />
     <main class="flex flex-grow items-stretch justify-center p-6">
-      <div 
+      <div
         v-if="shouldWrapInPageWrapper"
         class="flex flex-1 rounded-xl bg-white p-6 sm:flex-row items-center justify-center"
       >

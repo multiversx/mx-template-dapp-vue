@@ -1,5 +1,5 @@
 <template>
-  <div class="flex flex-col" v-if="transaction">
+  <div v-if="transaction" class="flex flex-col">
     <p>
       <Label>Hash: </Label>
       <a
@@ -9,7 +9,7 @@
         className="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
       >
         {{ transaction.hash }}
-    </a>
+      </a>
     </p>
 
     <p>
@@ -18,7 +18,7 @@
         :href="receiverExplorerLink"
         target="_blank"
         rel="noopener noreferrer"
-        className="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
+        class-name="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
       >
         {{ transaction.receiver }}
       </MxLink>
@@ -28,8 +28,8 @@
       <Label>Amount: </Label>
       <FormatAmount
         :value="transaction.value"
-        :showLabel="transaction.value !== '0'"
-        :egldLabel="label"
+        :show-label="transaction.value !== '0'"
+        :egld-label="label"
         data-testid="balance"
       />
     </p>
@@ -52,12 +52,12 @@
 </template>
 
 <script setup lang="ts">
-import { computed, onMounted, ref } from 'vue';
-import Label from './Label.vue';
-import FormatAmount from './FormatAmount.vue';
-import MxLink from './MxLink.vue';
 import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
 import { getExplorerLink } from '@multiversx/sdk-dapp/out/utils/transactions/getExplorerLink';
+import { computed, onMounted, ref } from 'vue';
+import FormatAmount from './FormatAmount.vue';
+import Label from './Label.vue';
+import MxLink from './MxLink.vue';
 
 export interface SignedTransactionType {
   hash: string;
@@ -78,8 +78,8 @@ const label = ref('');
 const explorerAddress = ref('');
 
 onMounted(() => {
-  const {network} = getNetworkConfig();
-  label.value = network.egldLabel
+  const { network } = getNetworkConfig();
+  label.value = network.egldLabel;
   explorerAddress.value = network.explorerAddress;
 });
 
@@ -102,7 +102,7 @@ const hashExplorerLink = computed(() => {
 
   return getExplorerLink({
     to: `/transactions/${props.transaction.hash}`,
-    explorerAddress: explorerAddress.value,
+    explorerAddress: explorerAddress.value
   });
 });
 
@@ -112,7 +112,7 @@ const receiverExplorerLink = computed(() => {
   }
   return getExplorerLink({
     to: `/accounts/${props.transaction.receiver}`,
-    explorerAddress: explorerAddress.value,
+    explorerAddress: explorerAddress.value
   });
-})
-</script> 
+});
+</script>

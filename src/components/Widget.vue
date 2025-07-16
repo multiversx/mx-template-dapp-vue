@@ -5,10 +5,7 @@
     :reference="widgetConfig.reference"
     :anchor="widgetConfig.anchor"
   >
-    <component
-      v-if="widgetConfig.widget"
-      :is="widgetConfig.widget"
-    />
+    <component :is="widgetConfig.widget" v-if="widgetConfig.widget" />
   </Card>
 </template>
 
@@ -28,4 +25,4 @@ interface Props {
 }
 
 defineProps<Props>();
-</script> 
+</script>

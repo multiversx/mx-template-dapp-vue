@@ -1,8 +1,8 @@
 <template>
   <div
+    :id="anchor"
     class="flex flex-col flex-1 rounded-xl bg-white p-6 justify-center"
     :data-testid="dataTestId"
-    :id="anchor"
   >
     <h2 class="flex text-xl font-medium group">
       {{ title }}
@@ -15,7 +15,7 @@
       </a>
     </h2>
     <p v-if="description" class="text-gray-400 mb-6">{{ description }}</p>
-    <slot></slot>
+    <slot />
   </div>
 </template>
 
@@ -29,4 +29,4 @@ interface Props {
 }
 
 defineProps<Props>();
-</script> 
+</script>
