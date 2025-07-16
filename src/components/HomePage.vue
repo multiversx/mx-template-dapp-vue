@@ -16,7 +16,7 @@
               sdk-dapp
             </a>
             starter project for any dApp
-            <br class="hidden xl:block" >
+            <br class="hidden xl:block" />
             built on the
             <a
               href="https://multiversx.com/"

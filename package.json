@@ -20,11 +20,12 @@
     "@multiversx/sdk-dapp-ui": "^0.x",
     "@multiversx/sdk-dapp-utils": "^2.x",
     "axios": "^1.10.0",
-    "vite-plugin-node-polyfills": "^0.23.0",
+    "bignumber.js": "^9.3.1",
     "vue": "^3.5.17",
     "vue-router": "^4.5.1"
   },
   "devDependencies": {
+    "@esbuild-plugins/node-modules-polyfill": "^0.2.2",
     "@tailwindcss/vite": "^4.1.11",
     "@tsconfig/node22": "^22.0.2",
     "@types/node": "^22.15.32",

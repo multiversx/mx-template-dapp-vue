@@ -2,6 +2,11 @@
 
 This template should help get you started developing with Vue 3 in Vite.
 
+## Requirements
+
+- [Node.js 22](https://nodejs.org/en) (make sure you are using version 22)
+- [pnpm](https://pnpm.io/installation) (package manager)
+
 ## Recommended IDE Setup
 
 [VSCode](https://code.visualstudio.com/) + [Volar](https://marketplace.visualstudio.com/items?itemName=Vue.volar) (and disable Vetur).

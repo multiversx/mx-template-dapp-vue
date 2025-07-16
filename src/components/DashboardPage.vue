@@ -1,7 +1,5 @@
 <script setup lang="ts">
-import { useRouter } from 'vue-router';
 import Widget from './Widget.vue';
-import { useAuth } from '../composables/useAuth';
 import { type WidgetType } from '../types/widget.types';
 import AccountWidget from '../widgets/AccountWidget.vue';
 import PingPongRawWidget from '../widgets/PingPongRawWidget.vue';
@@ -31,13 +29,6 @@ const WIDGETS: WidgetType[] = [
 ];
 
 const widgets = WIDGETS;
-const router = useRouter();
-const { logout: authLogout } = useAuth();
-
-async function logout() {
-  await authLogout();
-  router.push('/');
-}
 </script>
 
 <template>
