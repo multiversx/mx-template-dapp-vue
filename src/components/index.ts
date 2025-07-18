@@ -17,6 +17,7 @@ export { default as Transaction } from './Transaction.vue';
 export { default as TransactionOutput } from './TransactionOutput.vue';
 export { default as TransactionsOutput } from './TransactionsOutput.vue';
 export { default as Widget } from './Widget.vue';
+export { default as GitHubButton } from './GitHubButton.vue';
 
 // Re-export types
 export type { SignedTransactionType } from './TransactionOutput.vue';
