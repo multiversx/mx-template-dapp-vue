@@ -19,5 +19,5 @@
 </template>
 
 <script setup lang="ts">
-import { GITHUB_REPO_URL } from '@/constants';
+import { GITHUB_REPO_URL } from '@/config';
 </script>
