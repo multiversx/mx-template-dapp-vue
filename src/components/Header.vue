@@ -16,8 +16,9 @@
           <p class="text-gray-600">{{ environment }}</p>
         </div>
 
+        <GitHubButton />
+
         <template v-if="isLoggedIn">
-          <GitHubButton />
           <NotificationsButton />
           <Button
             :class-name="'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-gray-600 hover:bg-slate-100 mx-0'"
