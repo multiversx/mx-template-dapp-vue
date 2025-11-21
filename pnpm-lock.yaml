@@ -21,10 +21,10 @@ importers:
         specifier: 14.2.6
         version: 14.2.6(bignumber.js@9.3.1)(protobufjs@7.4.0)
       '@multiversx/sdk-dapp':
-        specifier: 5.3.3
+        specifier: ^5.x
         version: 5.3.3(@multiversx/sdk-core@14.2.6(bignumber.js@9.3.1)(protobufjs@7.4.0))(@multiversx/sdk-dapp-utils@2.0.2(@multiversx/sdk-core@14.2.6(bignumber.js@9.3.1)(protobufjs@7.4.0)))(@types/react@19.1.8)(axios@1.10.0)(bignumber.js@9.3.1)(protobufjs@7.4.0)(react-dom@19.1.0(react@18.3.1))(react@18.3.1)(typescript@5.8.3)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@multiversx/sdk-dapp-ui':
-        specifier: 0.1.4
+        specifier: ^0.x
         version: 0.1.4(@types/react@19.1.8)(react-dom@19.1.0(react@18.3.1))(react@18.3.1)(vue-router@4.5.1(vue@3.5.17(typescript@5.8.3)))(vue@3.5.17(typescript@5.8.3))
       '@multiversx/sdk-dapp-utils':
         specifier: ^2.x
