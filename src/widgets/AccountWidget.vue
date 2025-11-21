@@ -1,10 +1,16 @@
 <template>
   <OutputContainer :is-loading="isLoading">
     <div class="flex flex-col text-black" data-testid="topInfo">
-      <p class="truncate">
+      <div class="flex">
         <Label>Address: </Label>
-        <span data-testid="accountAddress">{{ address }}</span>
-      </p>
+        <MvxExplorerLink
+          :link="accountAddressLink"
+          target="_blank"
+          class="text-blue-600 hover:underline flex gap-0.5 items-center ml-1"
+        >
+          {{ address }}</MvxExplorerLink
+        >
+      </div>
 
       <p><Label>Shard: </Label> {{ shard }}</p>
 
@@ -27,10 +33,11 @@
 import { getAccount } from '@multiversx/sdk-dapp/out/methods/account/getAccount';
 import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
 import { getStore } from '@multiversx/sdk-dapp/out/store/store';
-import { ref, onMounted, onUnmounted } from 'vue';
+import { ref, onMounted, onUnmounted, computed } from 'vue';
 import Label from '../components/Label.vue';
 import OutputContainer from '../components/OutputContainer.vue';
 import FormatAmount from '@/components/FormatAmount.vue';
+import { MvxExplorerLink } from '@multiversx/sdk-dapp-ui/vue';
 
 const address = ref('');
 const balance = ref('');
@@ -40,6 +47,11 @@ const isLoading = ref(true);
 const label = ref('');
 
 let storeUnsubscribe: (() => void) | undefined;
+const networkConfig = getNetworkConfig();
+
+const accountAddressLink = computed(() => {
+  return `${networkConfig.network.explorerAddress}/accounts/${address.value}`;
+});
 
 function updateAccount() {
   const account = getAccount();

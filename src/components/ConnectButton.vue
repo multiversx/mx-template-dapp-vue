@@ -1,13 +1,13 @@
 <template>
-  <Button :class-name="className" @click="login">
+  <MvxButton :class-name="className" @button-click="login">
     <slot>Connect</slot>
-  </Button>
+  </MvxButton>
 </template>
 
 <script setup lang="ts">
 import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
+import { MvxButton } from '@multiversx/sdk-dapp-ui/vue';
 import { useRouter } from 'vue-router';
-import Button from './Button.vue';
 
 interface Props {
   className?: string;
