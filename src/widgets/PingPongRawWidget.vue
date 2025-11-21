@@ -25,27 +25,27 @@
     <!-- Action Buttons -->
     <div class="flex flex-col gap-2">
       <div class="flex justify-start gap-2">
-        <Button
+        <MvxButton
           :disabled="!viewState.canPing || viewState.isLoading"
           data-test-id="btnPingRaw"
           data-cy="transactionBtn"
-          @click="onSendPingTransaction"
+          @button-click="onSendPingTransaction"
         >
           <FontAwesomeIcon :icon="faArrowUp" class="mr-1" />
           Ping
-        </Button>
+        </MvxButton>
 
-        <Button
+        <MvxButton
           :disabled="
             !viewState.canPong || viewState.canPing || viewState.isLoading
           "
           data-test-id="btnPongRaw"
           data-cy="transactionBtn"
-          @click="onSendPongTransaction"
+          @button-click="onSendPongTransaction"
         >
           <FontAwesomeIcon :icon="faArrowDown" class="mr-1" />
           Pong
-        </Button>
+        </MvxButton>
       </div>
     </div>
 
@@ -54,9 +54,13 @@
       <!-- Contract Address -->
       <div class="mb-4">
         <label class="font-semibold">Contract Address:</label>
-        <span class="ml-2 font-mono text-sm break-all">{{
-          contractAddress
-        }}</span>
+        <MvxExplorerLink
+          class="ml-1 text-sm break-all text-blue-600 hover:underline"
+          target="_blank"
+          :link="contractAddressLink"
+        >
+          {{ contractAddress }}
+        </MvxExplorerLink>
       </div>
 
       <!-- Time Remaining -->
@@ -88,8 +92,9 @@
 <script setup lang="ts">
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { computed, ref, reactive, onMounted, onUnmounted } from 'vue';
-import Button from '../components/Button.vue';
+import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
+import { MvxExplorerLink, MvxButton } from '@multiversx/sdk-dapp-ui/vue';
+import { computed, ref, onMounted, onUnmounted } from 'vue';
 import OutputContainer from '../components/OutputContainer.vue';
 import PingPongOutput from '../components/PingPongOutput.vue';
 import { type SignedTransactionType } from '../components/TransactionOutput.vue';
@@ -111,6 +116,11 @@ interface ViewState {
 
 // Use the real ping pong service
 const pingPongService = usePingPong();
+const networkConfig = getNetworkConfig();
+
+const contractAddressLink = computed(() => {
+  return `${networkConfig.network.explorerAddress}/accounts/${contractAddress}`;
+});
 
 // Reactive view state computed from service
 const viewState = computed<ViewState>(() => {
