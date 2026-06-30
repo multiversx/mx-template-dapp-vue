@@ -1,4 +1,4 @@
-export { default as AccountWidget } from './AccountWidget.vue';
+export { default as AccountWidget } from '../widgets/AccountWidget.vue';
 export { default as Button } from './Button.vue';
 export { default as Card } from './Card.vue';
 export { default as ConnectButton } from './ConnectButton.vue';

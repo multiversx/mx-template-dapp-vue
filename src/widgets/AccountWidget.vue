@@ -28,9 +28,9 @@ import { getAccount } from '@multiversx/sdk-dapp/out/methods/account/getAccount'
 import { getNetworkConfig } from '@multiversx/sdk-dapp/out/methods/network/getNetworkConfig';
 import { getStore } from '@multiversx/sdk-dapp/out/store/store';
 import { ref, onMounted, onUnmounted } from 'vue';
+import FormatAmount from '@/components/FormatAmount.vue';
 import Label from '../components/Label.vue';
 import OutputContainer from '../components/OutputContainer.vue';
-import FormatAmount from '@/components/FormatAmount.vue';
 
 const address = ref('');
 const balance = ref('');

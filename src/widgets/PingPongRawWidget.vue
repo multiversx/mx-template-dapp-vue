@@ -88,7 +88,7 @@
 <script setup lang="ts">
 import { faArrowUp, faArrowDown } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
-import { computed, ref, reactive, onMounted, onUnmounted } from 'vue';
+import { computed, ref } from 'vue';
 import Button from '../components/Button.vue';
 import OutputContainer from '../components/OutputContainer.vue';
 import PingPongOutput from '../components/PingPongOutput.vue';
@@ -150,20 +150,4 @@ async function onSendPongTransaction() {
 function clearError() {
   pingPongService.clearError();
 }
-
-// Update time remaining countdown
-let intervalId: number | undefined;
-
-onMounted(() => {
-  intervalId = window.setInterval(() => {
-    // Force reactivity update for time remaining
-    viewState.value; // Access to trigger computed recalculation
-  }, 1000);
-});
-
-onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
-});
 </script>

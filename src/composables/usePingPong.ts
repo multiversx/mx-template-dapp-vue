@@ -8,8 +8,8 @@ import { getPendingTransactions } from '@multiversx/sdk-dapp/out/methods/transac
 import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
 import BigNumber from 'bignumber.js';
 import { ref, computed, onMounted, onUnmounted, watch } from 'vue';
-import { type SignedTransactionType } from '../components/TransactionOutput.vue';
 import { contractAddress } from '@/config';
+import { type SignedTransactionType } from '../components/TransactionOutput.vue';
 
 export interface PingPongResponseType {
   data: {

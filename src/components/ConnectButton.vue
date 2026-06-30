@@ -25,7 +25,7 @@ function login() {
     loginHandler: () => {
       router.push('/dashboard');
     },
-    onClose: () => {}
+    onClose: async () => {}
   });
   unlockPanelManager.openUnlockPanel();
 }
