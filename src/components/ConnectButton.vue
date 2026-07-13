@@ -1,5 +1,5 @@
 <template>
-  <Button :class-name="className" @click="login">
+  <Button v-if="!isLoggedIn" :class-name="className" @click="login">
     <slot>Connect</slot>
   </Button>
 </template>
@@ -8,6 +8,7 @@
 import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
 import { useRouter } from 'vue-router';
 import Button from './Button.vue';
+import { useAuth } from '../composables/useAuth';
 
 interface Props {
   className?: string;
@@ -19,6 +20,7 @@ withDefaults(defineProps<Props>(), {
 });
 
 const router = useRouter();
+const { isLoggedIn } = useAuth();
 
 function login() {
   const unlockPanelManager = UnlockPanelManager.init({
