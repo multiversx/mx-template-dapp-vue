@@ -28,13 +28,8 @@
             blockchain.
           </p>
         </div>
-        <Transaction />
       </div>
     </div>
     <div class="h-4/6 bg-mvx-white bg-contain bg-no-repeat w-1/2 bg-center" />
   </div>
 </template>
-
-<script setup lang="ts">
-import Transaction from './Transaction.vue';
-</script>

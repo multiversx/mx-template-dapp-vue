@@ -1,24 +1,26 @@
 <template>
   <div class="flex flex-col gap-6">
     <div class="flex gap-2 items-start">
-      <Button
+      <MvxButton
         v-if="state === 'success' || state === 'error'"
         id="closeButton"
         data-test-id="closeTransactionSuccessBtn"
-        @click="handleClear"
+        size="small"
+        @button-click="handleClear"
       >
         <FontAwesomeIcon :icon="state === 'error' ? faRotateRight : faBroom" />
-      </Button>
+      </MvxButton>
 
-      <Button
+      <MvxButton
         v-if="state === 'pending'"
         data-test-id="signMsgBtn"
         :disabled="!message.trim()"
-        @click="handleSubmit"
+        size="small"
+        @button-click="handleSubmit"
       >
         <FontAwesomeIcon :icon="faPen" />
         Sign
-      </Button>
+      </MvxButton>
     </div>
 
     <OutputContainer :class-name="'p-0 border-0'">
@@ -80,8 +82,8 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome';
 import { Message } from '@multiversx/sdk-core/out';
 import { getAccount } from '@multiversx/sdk-dapp/out/methods/account/getAccount';
 import { getAccountProvider } from '@multiversx/sdk-dapp/out/providers/helpers/accountProvider';
+import { MvxButton } from '@multiversx/sdk-dapp-ui/vue';
 import { ref, computed } from 'vue';
-import Button from '../components/Button.vue';
 import Label from '../components/Label.vue';
 import OutputContainer from '../components/OutputContainer.vue';
 
