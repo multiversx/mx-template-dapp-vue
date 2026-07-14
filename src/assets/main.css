@@ -1,1 +1,8 @@
-@import "tailwindcss";
+@import 'tailwindcss';
+
+/* Migrated from the legacy tailwind.config.js `backgroundImage` extension
+   (Tailwind v4 is CSS-first and ignored that config). The SVG is served from
+   public/ at the site root. */
+@utility bg-mvx-white {
+  background-image: url('/multiversx-white.svg');
+}

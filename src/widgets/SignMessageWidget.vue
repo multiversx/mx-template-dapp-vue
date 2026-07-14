@@ -5,6 +5,7 @@
         v-if="state === 'success' || state === 'error'"
         id="closeButton"
         data-test-id="closeTransactionSuccessBtn"
+        size="small"
         @button-click="handleClear"
       >
         <FontAwesomeIcon :icon="state === 'error' ? faRotateRight : faBroom" />
@@ -14,6 +15,7 @@
         v-if="state === 'pending'"
         data-test-id="signMsgBtn"
         :disabled="!message.trim()"
+        size="small"
         @button-click="handleSubmit"
       >
         <FontAwesomeIcon :icon="faPen" />

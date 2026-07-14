@@ -29,6 +29,7 @@
           :disabled="!viewState.canPing || viewState.isLoading"
           data-test-id="btnPingRaw"
           data-cy="transactionBtn"
+          size="small"
           @button-click="onSendPingTransaction"
         >
           <FontAwesomeIcon :icon="faArrowUp" class="mr-1" />
@@ -41,6 +42,7 @@
           "
           data-test-id="btnPongRaw"
           data-cy="transactionBtn"
+          size="small"
           @button-click="onSendPongTransaction"
         >
           <FontAwesomeIcon :icon="faArrowDown" class="mr-1" />
@@ -160,20 +162,4 @@ async function onSendPongTransaction() {
 function clearError() {
   pingPongService.clearError();
 }
-
-// Update time remaining countdown
-let intervalId: number | undefined;
-
-onMounted(() => {
-  intervalId = window.setInterval(() => {
-    // Force reactivity update for time remaining
-    viewState.value; // Access to trigger computed recalculation
-  }, 1000);
-});
-
-onUnmounted(() => {
-  if (intervalId) {
-    clearInterval(intervalId);
-  }
-});
 </script>

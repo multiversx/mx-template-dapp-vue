@@ -1,13 +1,14 @@
 <template>
-  <MvxButton :class="className" @button-click="login">
+  <Button v-if="!isLoggedIn" :class-name="className" @click="login">
     <slot>Connect</slot>
-  </MvxButton>
+  </Button>
 </template>
 
 <script setup lang="ts">
 import { UnlockPanelManager } from '@multiversx/sdk-dapp/out/managers/UnlockPanelManager';
-import { MvxButton } from '@multiversx/sdk-dapp-ui/vue';
 import { useRouter } from 'vue-router';
+import Button from './Button.vue';
+import { useAuth } from '../composables/useAuth';
 
 interface Props {
   className?: string;
@@ -15,17 +16,18 @@ interface Props {
 
 withDefaults(defineProps<Props>(), {
   className:
-    'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 text-white mr-0'
+    'inline-block rounded-lg px-3 py-2 text-center hover:no-underline my-0 bg-blue-600 text-white hover:bg-blue-700 mr-0'
 });
 
 const router = useRouter();
+const { isLoggedIn } = useAuth();
 
 function login() {
   const unlockPanelManager = UnlockPanelManager.init({
     loginHandler: () => {
       router.push('/dashboard');
     },
-    onClose: () => {}
+    onClose: async () => {}
   });
   unlockPanelManager.openUnlockPanel();
 }

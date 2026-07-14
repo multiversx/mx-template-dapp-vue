@@ -36,9 +36,7 @@ const openReadmeInEditor = () => fetch('/__open-in-editor?file=README.md');
       rel="noopener"
       >Vite</a
     >. The recommended IDE setup is
-    <a
-href="https://code.visualstudio.com/" target="_blank"
-rel="noopener"
+    <a href="https://code.visualstudio.com/" target="_blank" rel="noopener"
       >VSCode</a
     >
     +
@@ -52,17 +50,14 @@ rel="noopener"
     and
     <a href="https://www.cypress.io/" target="_blank" rel="noopener">Cypress</a>
     /
-    <a
-href="https://playwright.dev/" target="_blank"
-rel="noopener"
+    <a href="https://playwright.dev/" target="_blank" rel="noopener"
       >Playwright</a
     >.
 
     <br />
 
     More instructions are available in
-    <a href="javascript:void(0)"
-@click="openReadmeInEditor"
+    <a href="javascript:void(0)" @click="openReadmeInEditor"
       ><code>README.md</code></a
     >.
   </WelcomeItem>
@@ -75,19 +70,13 @@ rel="noopener"
 
     Get official tools and libraries for your project:
     <a href="https://pinia.vuejs.org/" target="_blank" rel="noopener">Pinia</a>,
-    <a
-href="https://router.vuejs.org/" target="_blank"
-rel="noopener"
+    <a href="https://router.vuejs.org/" target="_blank" rel="noopener"
       >Vue Router</a
     >,
-    <a
-href="https://test-utils.vuejs.org/" target="_blank"
-rel="noopener"
+    <a href="https://test-utils.vuejs.org/" target="_blank" rel="noopener"
       >Vue Test Utils</a
     >, and
-    <a
-href="https://github.com/vuejs/devtools" target="_blank"
-rel="noopener"
+    <a href="https://github.com/vuejs/devtools" target="_blank" rel="noopener"
       >Vue Dev Tools</a
     >. If you need more resources, we suggest paying
     <a
@@ -114,9 +103,7 @@ rel="noopener"
       rel="noopener"
       >StackOverflow</a
     >. You should also follow the official
-    <a
-href="https://bsky.app/profile/vuejs.org" target="_blank"
-rel="noopener"
+    <a href="https://bsky.app/profile/vuejs.org" target="_blank" rel="noopener"
       >@vuejs.org</a
     >
     Bluesky account or the
@@ -132,9 +119,7 @@ rel="noopener"
 
     As an independent project, Vue relies on community backing for its
     sustainability. You can help us by
-    <a
-href="https://vuejs.org/sponsor/" target="_blank"
-rel="noopener"
+    <a href="https://vuejs.org/sponsor/" target="_blank" rel="noopener"
       >becoming a sponsor</a
     >.
   </WelcomeItem>

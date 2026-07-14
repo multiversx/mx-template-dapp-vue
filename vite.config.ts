@@ -1,15 +1,22 @@
-import fs from 'fs';
 import { fileURLToPath, URL } from 'node:url';
+import fs from 'fs';
 
-import { NodeModulesPolyfillPlugin } from '@esbuild-plugins/node-modules-polyfill';
-import tailwindcss from '@tailwindcss/vite';
-import vue from '@vitejs/plugin-vue';
 import { defineConfig } from 'vite';
+import vue from '@vitejs/plugin-vue';
 import vueDevTools from 'vite-plugin-vue-devtools';
+import { nodePolyfills } from 'vite-plugin-node-polyfills';
+import tailwindcss from '@tailwindcss/vite';
 
 // https://vite.dev/config/
 export default defineConfig({
-  plugins: [vue(), vueDevTools(), tailwindcss()],
+  plugins: [
+    vue(),
+    vueDevTools(),
+    nodePolyfills({
+      protocolImports: true
+    }),
+    tailwindcss()
+  ],
   resolve: {
     alias: {
       '@': fileURLToPath(new URL('./src', import.meta.url))
@@ -21,22 +28,5 @@ export default defineConfig({
       cert: fs.readFileSync('./localhost-cert.pem')
     },
     host: 'localhost'
-  },
-  define: {
-    global: 'globalThis',
-    'process.env': {}
-  },
-  optimizeDeps: {
-    esbuildOptions: {
-      define: {
-        global: 'globalThis'
-      },
-      plugins: [NodeModulesPolyfillPlugin()]
-    }
-  },
-  build: {
-    rollupOptions: {
-      plugins: [NodeModulesPolyfillPlugin()]
-    }
   }
 });
