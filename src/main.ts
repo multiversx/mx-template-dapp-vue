@@ -1,10 +1,10 @@
 import './assets/main.css';
 import { getIsLoggedIn } from '@multiversx/sdk-dapp/out/methods/account/getIsLoggedIn';
 import { initApp } from '@multiversx/sdk-dapp/out/methods/initApp/initApp';
-import { EnvironmentsEnum } from '@multiversx/sdk-dapp/out/types/enums.types';
 
 import { createApp } from 'vue';
 import { createRouter, createWebHistory } from 'vue-router';
+import { environment } from '@/config';
 import App from './App.vue';
 
 const routes = [
@@ -53,7 +53,7 @@ router.beforeEach((to, from, next) => {
 const config = {
   storage: { getStorageCallback: () => sessionStorage },
   dAppConfig: {
-    environment: EnvironmentsEnum.devnet,
+    environment,
     successfulToastLifetime: 5000
   }
 };

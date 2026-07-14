@@ -1,14 +1,13 @@
 <template>
   <span :class="className" :data-testid="dataTestId">
     <span class="amount-integer">{{ valueInteger }}</span
-    ><span v-if="valueDecimal"
-class="amount-decimal">.{{ valueDecimal }}</span>
+    ><span v-if="valueDecimal" class="amount-decimal">.{{ valueDecimal }}</span>
     <span v-if="showLabel" class="amount-label"> {{ label }}</span>
   </span>
 </template>
 
 <script setup lang="ts">
-import { computed, watch, ref } from 'vue';
+import { watch, ref } from 'vue';
 
 interface Props {
   value: string;

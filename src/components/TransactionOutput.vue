@@ -15,7 +15,7 @@
     <p>
       <Label>Receiver: </Label>
       <MxLink
-        :href="receiverExplorerLink"
+        :to="receiverExplorerLink"
         target="_blank"
         rel="noopener noreferrer"
         class-name="border-b border-dotted border-gray-500 hover:border-solid hover:border-gray-800"
